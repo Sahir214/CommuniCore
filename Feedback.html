@@ -171,16 +171,16 @@
       </div>
 
       <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzSPK5bLwyDBJ_HLxIX2Oyc7Ti5GP1eeIfcnoYcNWNlmkKebjKanBkJ2l6hdhNTJIjb-Q/exec'
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby2tPgDT41f1CP2-9TudlxlyFA-9kHbSWg9xOQIK7DjKt3md8l4V6LfoJKwf6xe4sQX4w/exec'
         const form = document.forms['google-sheet']
       
         form.addEventListener('submit', e => {
           e.preventDefault()
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => alert("Thanks for Your Valuable Feedback..!! Have a good day..."))
-            .catch(error => console.error('Error!', error.message))
-            form.reset();
-
+          fetch(scriptURL, {
+          method: 'POST',
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+          headers: { 'Content-Type': 'application/json' }
+          })
         })
         
       </script>
