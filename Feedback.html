@@ -58,7 +58,7 @@
             <label for="dropdown"
               >Enter Your College Name (If student, otherwise mention NA)</label>
               <input
-              type="college"
+              type="text"
               id="college"
               class="form-control"
               name="College"
@@ -71,8 +71,8 @@
             <label for="dropdown"
               >Enter Your Branch & Year (If student, otherwise mention NA)</label>
               <input
-              type="Bname"
-              id="Bname"
+              type="Branch"
+              id="Branch"
               name="Branch"
               class="form-control"
               placeholder="Enter your Branch-Year"
@@ -122,7 +122,7 @@
             <p style="color: white;">How's your experience ?</p>
             <p>
               <label style="color: white;">
-                <input type="radio" value="Poor" name="experience" id="definitely" />
+                <input type="radio" value="Poor" name="experience" id="poor" />
                 Poor
               </label>
             </p>
@@ -180,8 +180,18 @@
           method: 'POST',
           body: JSON.stringify(Object.fromEntries(new FormData(form))),
           headers: { 'Content-Type': 'application/json' }
-          })
         })
+        .then(response => response.json())
+        .then(data => {
+          alert(data.result); // Show success message
+          form.reset(); // Optional: reset the form after submission
+        })
+        .catch(error => {
+          console.error('Error!', error.message); // Handle errors
+          alert('Error! Please try again.'); // Optional: show error message
+        });
+      
+    })
         
       </script>
       
