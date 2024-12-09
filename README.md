@@ -16,3 +16,4 @@ Fosters innovation, collaboration, and self-expression, enriching the overall co
 Follow us on:
 - Instagram: [EC Communique](https://www.instagram.com/ec_communique/)
 - LinkedIn: [Communique Students Society](https://www.linkedin.com/company/communique-students-society/?originalSubdomain=in)
+- Offical Website : [CommuniCore](https://communicore.netlify.app/courses.html)
