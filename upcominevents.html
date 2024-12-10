@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events | CommuniCore</title>
+    <style>
+        /* General Reset */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0 0;
+        }
+
+        /* Upcoming Events Section */
+        .upcoming-section {
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .events-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .event-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .event-date {
+            font-weight: bold;
+            color: #6a11cb;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-description {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .register-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            color: white;
+            background-color: #2575fc;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .register-btn:hover {
+            background-color: #6a11cb;
+        }
+
+        /* Animation */
+        .event-card {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .event-card.appear {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Upcoming Events</h1>
+        <p>Don't miss out on our exciting events!</p>
+    </header>
+
+    <section class="upcoming-section">
+        <h2 class="section-title">Events You'll Love</h2>
+        <div class="events-container" id="eventsContainer">
+            <!-- Events will be dynamically generated here -->
+        </div>
+    </section>
+
+    <script>
+        // Upcoming Events Data
+        const upcomingEvents = [
+            {
+                date: "January 15, 2024",
+                title: "Tech Conference 2024",
+                description: "Join us for a day of networking, workshops, and talks by industry leaders.",
+                registerLink: "#"
+            },
+            {
+                date: "February 10, 2024",
+                title: "Art & Design Expo",
+                description: "Discover creative works and participate in hands-on design activities.",
+                registerLink: "#"
+            },
+            {
+                date: "March 5, 2024",
+                title: "Health & Wellness Retreat",
+                description: "Recharge with yoga sessions, mindfulness workshops, and more.",
+                registerLink: "#"
+            },
+            {
+                date: "April 20, 2024",
+                title: "Spring Startup Summit",
+                description: "Pitch your startup and connect with investors and mentors.",
+                registerLink: "#"
+            },
+        ];
+
+        // Render Events Dynamically
+        function renderUpcomingEvents() {
+            const eventsContainer = document.getElementById("eventsContainer");
+
+            // Clear existing content
+            eventsContainer.innerHTML = "";
+
+            // Loop through events and create cards
+            upcomingEvents.forEach((event, index) => {
+                const eventCard = document.createElement("div");
+                eventCard.classList.add("event-card");
+
+                // Add content to the card
+                eventCard.innerHTML = `
+                    <p class="event-date">${event.date}</p>
+                    <h3 class="event-title">${event.title}</h3>
+                    <p class="event-description">${event.description}</p>
+                    <a href="${event.registerLink}" class="register-btn">Register Now</a>
+                `;
+
+                // Append the card to the container
+                eventsContainer.appendChild(eventCard);
+
+                // Add animation with delay
+                setTimeout(() => {
+                    eventCard.classList.add("appear");
+                }, index * 200);
+            });
+        }
+
+        // Initialize Page
+        document.addEventListener("DOMContentLoaded", renderUpcomingEvents);
+    </script>
+</body>
+</html>
