@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communique Events</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/events.css">
+    <link rel="stylesheet" href="assets/css/upcomingevents.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Communique Events</h1>
+        <p>Your gateway to the most exciting events of the year!</p>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="upcomingevents.html">Upcoming Events</a>
+        </nav>
+    </header>
+
+    <section class="quote">
+        "A great event isn't measured by how many people show up, but by how much they remember it."
+    </section>
+
+    <section id="events" class="timeline-section">
+        <div class="timeline-header">
+            <h2 class="section-title">Events Timeline</h2>
+            <p class="section-subtitle">Upcoming events you won't want to miss!</p>
+        </div>
+        <div class="timeline" id="timeline"></div>
+    </section>
+
+    <section class="gallery">
+        <h2>Event Highlights</h2>
+        <div class="gallery-images" id="gallery"></div>
+    </section>
+
+    <footer>
+        © 2024 Communique Events | <a href="#">Contact Us</a>
+    </footer>
+
+    <script>
+        const events = [
+            {
+                date: "January 15, 2024",
+                title: "Tech Conference 2024",
+                description: "Join us for networking, workshops, and talks by industry leaders.",
+                image: "https://via.placeholder.com/300x200?text=Tech+Conference"
+            },
+            {
+                date: "February 10, 2024",
+                title: "Art & Design Expo",
+                description: "Explore creative works and participate in hands-on design activities.",
+                image: "https://via.placeholder.com/300x200?text=Art+Expo"
+            },
+            {
+                date: "March 5, 2024",
+                title: "Health & Wellness Retreat",
+                description: "Recharge with yoga sessions, mindfulness workshops, and more.",
+                image: "https://via.placeholder.com/300x200?text=Wellness+Retreat"
+            },
+            {
+                date: "April 20, 2024",
+                title: "Spring Startup Summit",
+                description: "Pitch your startup and connect with investors and mentors.",
+                image: "https://via.placeholder.com/300x200?text=Startup+Summit"
+            },
+        ];
+
+        function renderTimeline() {
+            const timeline = document.getElementById("timeline");
+            timeline.innerHTML = "";
+
+            events.forEach((event, index) => {
+                const timelineItem = document.createElement("div");
+                timelineItem.classList.add("timeline-item");
+                timelineItem.innerHTML = `
+                    <p class="timeline-date">${event.date}</p>
+                    <h2 class="timeline-title">${event.title}</h2>
+                    <p class="timeline-description">${event.description}</p>
+                `;
+                timeline.appendChild(timelineItem);
+
+                setTimeout(() => {
+                    timelineItem.classList.add("appear");
+                }, index * 300);
+            });
+        }
+
+        function renderGallery() {
+            const gallery = document.getElementById("gallery");
+            gallery.innerHTML = "";
+
+            events.forEach(event => {
+                const imageDiv = document.createElement("div");
+                imageDiv.classList.add("gallery-image");
+                imageDiv.style.backgroundImage = `url(${event.image})`;
+                gallery.appendChild(imageDiv);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderTimeline();
+            renderGallery();
+        });
+    </script>
+</body>
+</html>
