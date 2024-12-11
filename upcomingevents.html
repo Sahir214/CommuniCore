@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events | CommuniCore</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/events.css">
+    <link rel="stylesheet" href="assets/css/upcomingevents.css">
+</head>
+<body>
+    <header>
+        <h1>Upcoming Events</h1>
+        <p>Don't miss out on opportunities to connect, learn, and grow!</p>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <section class="quote">
+        "Memories are made when extraordinary moments meet extraordinary people."
+    </section>
+
+    <section class="upcoming-section">
+        <h2 class="section-title">Events You'll Love</h2>
+        <div class="events-container" id="eventsContainer">
+            <!-- Events will be dynamically generated here -->
+        </div>
+    </section>
+
+    <footer>
+        © 2024 CommuniCore Events | <a href="#">Contact Us</a>
+    </footer>
+
+    <script>
+        // Upcoming Events Data
+        const upcomingEvents = [
+            {
+                date: "January 15, 2024",
+                title: "Tech Conference 2024",
+                description: "Join us for a day of networking, workshops, and talks by industry leaders.",
+                image: "https://via.placeholder.com/400x250?text=Tech+Conference",
+                registerLink: "#"
+            },
+            {
+                date: "February 10, 2024",
+                title: "Art & Design Expo",
+                description: "Discover creative works and participate in hands-on design activities.",
+                image: "https://via.placeholder.com/400x250?text=Art+Expo",
+                registerLink: "#"
+            },
+            {
+                date: "March 5, 2024",
+                title: "Health & Wellness Retreat",
+                description: "Recharge with yoga sessions, mindfulness workshops, and more.",
+                image: "https://via.placeholder.com/400x250?text=Wellness+Retreat",
+                registerLink: "#"
+            },
+            {
+                date: "April 20, 2024",
+                title: "Spring Startup Summit",
+                description: "Pitch your startup and connect with investors and mentors.",
+                image: "https://via.placeholder.com/400x250?text=Startup+Summit",
+                registerLink: "#"
+            },
+        ];
+
+        // Render Events Dynamically
+        function renderUpcomingEvents() {
+            const eventsContainer = document.getElementById("eventsContainer");
+
+            // Clear existing content
+            eventsContainer.innerHTML = "";
+
+            // Loop through events and create cards
+            upcomingEvents.forEach((event, index) => {
+                const eventCard = document.createElement("div");
+                eventCard.classList.add("event-card");
+
+                // Add content to the card
+                eventCard.innerHTML = `
+                    <img src="${event.image}" alt="${event.title}">
+                    <p class="event-date">${event.date}</p>
+                    <h3 class="event-title">${event.title}</h3>
+                    <p class="event-description">${event.description}</p>
+                    <a href="${event.registerLink}" class="register-btn">Register Now</a>
+                `;
+
+                // Append the card to the container
+                eventsContainer.appendChild(eventCard);
+
+                // Add animation with delay
+                setTimeout(() => {
+                    eventCard.classList.add("appear");
+                }, index * 200);
+            });
+        }
+
+        // Initialize Page
+        document.addEventListener("DOMContentLoaded", renderUpcomingEvents);
+    </script>
+</body>
+</html>
